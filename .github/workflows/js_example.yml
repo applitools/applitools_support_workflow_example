@@ -8,6 +8,6 @@ jobs:
   # This workflow contains a single job called "support-test"
   support-test:
     # Support workflow which will be run
-    uses: applitools/applitools_support_matrix/.github/workflows/js_selenium.yml@main
+    uses: applitools/applitools_support_matrix/.github/workflows/js_selenium.yml@develop
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
