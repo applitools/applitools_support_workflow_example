@@ -5,9 +5,28 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  before-part:
+    runs-on: ubuntu-latest
+    name: Before Run
+    steps:
+      - name: Before part
+        run: |
+          echo "Some actions"
+          echo "Before running support tests"
   # This workflow contains a single job called "support-test"
   support-test:
+    needs: before-part
     # Support workflow which will be run
     uses: applitools/applitools_support_matrix/.github/workflows/js_selenium.yml@develop
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+  after-part:
+    needs: support-test
+    runs-on: ubuntu-latest
+    name: After Run
+    steps:
+      - name: After part
+        run: |
+          echo "Some actions"
+          echo "Doing some staff after passing tests"
+      
