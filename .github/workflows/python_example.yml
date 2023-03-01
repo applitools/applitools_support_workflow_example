@@ -6,13 +6,27 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   before-part:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     name: Before Run
     steps:
-      - name: Before part
-        run: |
-          echo "Some actions"
-          echo "Before running support tests"
+      - uses: actions/checkout@v3
+        with:
+          repository: applitools/eyes.sdk.javascript1
+          ref: 'master'
+      - uses: actions/setup-python@v3
+        with:
+          python-version: "3.6"
+      - name: Build packages
+        working-directory: python
+        run: make dist
+      - uses: actions/upload-artifact@v3
+        with:
+          name: packages
+          if-no-files-found: error
+          # the * wildcard in pyth*n is not to match anything, but to prevent
+          # upload-artifact from flattening python directory, e.g. uploading
+          # it's contents without python directory itself.
+          path: "pyth*n/*/dist/"
   # This workflow contains a single job called "support-test"
   support-test:
     needs: before-part
