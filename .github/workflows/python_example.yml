@@ -18,7 +18,7 @@ jobs:
     needs: before-part
     # Support workflow which will be run
     uses: applitools/applitools_support_matrix/.github/workflows/python.yml@python_package
-    input:
+    with:
       last_passed: false
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
