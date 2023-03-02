@@ -20,7 +20,11 @@ jobs:
         working-directory: python/eyes_selenium
         run: |
           pip install bump2version
-          bumpversion build --list         
+          bumpversion build --list
+        env:
+          GIT_AUTHOR_NAME: ${{github.actor}}
+          GIT_COMMITTER_NAME: ${{github.actor}}
+          EMAIL: github-actions@github.com          
       - name: Build packages
         working-directory: python
         run: make dist
