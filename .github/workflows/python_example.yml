@@ -18,7 +18,9 @@ jobs:
           python-version: "3.6"
       - name: Bump test version
         working-directory: python/eyes_selenium
-        run: bumpversion build --list         
+        run: |
+          pip install bump2version
+          bumpversion build --list         
       - name: Build packages
         working-directory: python
         run: make dist
