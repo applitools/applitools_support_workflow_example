@@ -36,7 +36,7 @@ jobs:
         run: make dist
       - uses: actions/upload-artifact@v3
         with:
-          name: packages
+          name: package
           if-no-files-found: error
           # the * wildcard in pyth*n is not to match anything, but to prevent
           # upload-artifact from flattening python directory, e.g. uploading
