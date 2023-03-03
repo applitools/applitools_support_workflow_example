@@ -21,6 +21,7 @@ jobs:
         run: |
           pip install bump2version
           bumpversion build --list
+          cat .bumpversion.cfg | grep current_version =
         env:
           GIT_AUTHOR_NAME: ${{github.actor}}
           GIT_COMMITTER_NAME: ${{github.actor}}
@@ -28,14 +29,14 @@ jobs:
       - name: Build packages
         working-directory: python
         run: make dist
-      - uses: actions/upload-artifact@v3
-        with:
-          name: packages
-          if-no-files-found: error
-          # the * wildcard in pyth*n is not to match anything, but to prevent
-          # upload-artifact from flattening python directory, e.g. uploading
-          # it's contents without python directory itself.
-          path: "pyth*n/*/dist/"
+#      - uses: actions/upload-artifact@v3
+#        with:
+#          name: packages
+#          if-no-files-found: error
+#          # the * wildcard in pyth*n is not to match anything, but to prevent
+#          # upload-artifact from flattening python directory, e.g. uploading
+#          # it's contents without python directory itself.
+#          path: "pyth*n/*/dist/"
   # This workflow contains a single job called "support-test"
   support-test:
     needs: before-part
