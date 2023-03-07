@@ -23,7 +23,7 @@ jobs:
         working-directory: python
         run: |
           ./ci_scripts/bump_test.sh
-          version=$(cat ./eyes_selenium/.bumptest.cfg | grep -o '[0-9]\+\.[0-9]\+\.[0-9]\+\(\.[a-zA-Z]\+\)\?')
+          version=$(cat ./eyes_selenium/.bumptest.cfg | grep -o '[0-9]\+\.[0-9]\+\.[0-9]\+\(\.[0-9]\+\)\?')
           echo $version
           echo "version=package@$version" >> $GITHUB_OUTPUT
         env:
