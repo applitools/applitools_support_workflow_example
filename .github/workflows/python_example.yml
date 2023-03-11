@@ -45,10 +45,10 @@ jobs:
   support-test:
     needs: before-part
     # Support workflow which will be run
-    uses: applitools/applitools_support_matrix/.github/workflows/python.yml@python_package
+    uses: applitools/applitools_support_matrix/.github/workflows/python.yml@main
     with:
       last_passed: false
-      checkout_ref: 'python_package'
+      checkout_ref: 'main'
       eyes_version: ${{ needs.before-part.outputs.version }}
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
