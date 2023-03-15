@@ -52,8 +52,8 @@ jobs:
       eyes_version: ${{ needs.before-part.outputs.version }}
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-      SAUCE_USERNAME: "empty"
-      SAUCE_ACCESS_KEY: "empty"
+      SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
+      SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
   after-part:
     needs: support-test
     runs-on: ubuntu-latest
