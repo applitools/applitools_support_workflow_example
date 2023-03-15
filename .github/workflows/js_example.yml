@@ -17,9 +17,16 @@ jobs:
   support-test:
     needs: before-part
     # Support workflow which will be run
+    # the eyes_version value should be equal to the current version in the sdk repo, and should be available in npm
     uses: applitools/applitools_support_matrix/.github/workflows/js_selenium.yml@main
+    with:
+      last_passed: false
+      checkout_ref: 'main'
+      eyes_version: "exact@4.63.0"
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+      SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
+      SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
   after-part:
     needs: support-test
     runs-on: ubuntu-latest
