@@ -17,7 +17,7 @@ jobs:
   support-test:
     needs: before-part
     # Support workflow which will be run
-    # the eyes_version value should be equal to the current version in the sdk repo, and should be available in npm
+    # the eyes_version value should be equal to the current version in the sdk repo, and should be available in maven
     uses: applitools/applitools_support_matrix/.github/workflows/java.yml@main
     with:
       last_passed: false
