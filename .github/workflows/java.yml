@@ -22,7 +22,7 @@ jobs:
     with:
       last_passed: false
       checkout_ref: 'main'
-      eyes_version: "exact@5.43.0"
+      eyes_version: "exact@5.44.0"
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
       SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
