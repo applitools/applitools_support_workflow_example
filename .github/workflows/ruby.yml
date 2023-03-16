@@ -1,0 +1,38 @@
+name: Ruby Example
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  before-part:
+    runs-on: ubuntu-latest
+    name: Before Run
+    steps:
+      - name: Before part
+        run: |
+          echo "Some actions"
+          echo "Before running support tests"
+  # This workflow contains a single job called "support-test"
+  support-test:
+    needs: before-part
+    # Support workflow which will be run
+    # the eyes_version value should be equal to the current version in the sdk repo, and should be available in npm
+    uses: applitools/applitools_support_matrix/.github/workflows/ruby.yml@main
+    with:
+      last_passed: false
+      checkout_ref: 'main'
+      eyes_version: "exact@4.5.0"
+    secrets:
+      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+      SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
+      SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
+  after-part:
+    needs: support-test
+    runs-on: ubuntu-latest
+    name: After Run
+    steps:
+      - name: After part
+        run: |
+          echo "Some actions"
+          echo "Doing some staff after passing tests"
