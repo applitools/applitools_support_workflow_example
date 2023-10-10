@@ -21,7 +21,7 @@ jobs:
     uses: applitools/applitools_support_matrix/.github/workflows/pre_release_run.yml@main
     with:
       last_passed: false
-      sdk_versions_json: '[{ "name": "js/eyes-cypress", "version": "exact@3.36.2"}, {"name": "js/eyes-testcafe", "version": "exact@3.0.0"}, {"name": "python/eyes-selenium", "version": "exact@5.20.2"}]'
+      sdk_versions_json: '[{ "name": "js/eyes-cypress", "version": "exact@3.36.2"}, {"name": "js/eyes-testcafe", "version": "exact@3.0.0"}, {"name": "python/eyes-selenium", "version": "exact@5.20.2"}, {"name": "java/eyes-playwright-java5", "version": "exact@5.64.2"}]'
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
       SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
