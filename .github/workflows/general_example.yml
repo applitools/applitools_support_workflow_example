@@ -18,9 +18,8 @@ jobs:
     needs: before-part
     # Support workflow which will be run
     # the eyes_version value should be equal to the current version in the sdk repo, and should be available in npm
-    uses: applitools/applitools_support_matrix/.github/workflows/pre_release_run.yml@langs_updates
+    uses: applitools/applitools_support_matrix/.github/workflows/pre_release_run.yml@main
     with:
-      checkout_ref: 'langs_updates'
       last_passed: false
       sdk_versions_json: '[{ "name": "js/eyes-cypress", "version": "exact@3.36.2"}, {"name": "js/eyes-testcafe", "version": "exact@3.0.0"}, {"name": "python/eyes-selenium", "version": "exact@5.20.2"}]'
     secrets:
